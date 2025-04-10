@@ -10,10 +10,13 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 # Configuration CORS plus permissive
 CORS(app, resources={
-    r"/api/*": {
-        "origins": ["*"],  # Permettre toutes les origines
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
+    r"/*": {
+        "origins": ["*"],
+        "methods": ["GET", "POST", "OPTIONS", "HEAD"],
+        "allow_headers": ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
+        "expose_headers": ["Content-Type", "Authorization"],
+        "supports_credentials": True,
+        "max_age": 3600
     }
 })
 
