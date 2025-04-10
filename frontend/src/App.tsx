@@ -1,48 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import './App.css'
 
 function App() {
-  const [message, setMessage] = useState<string>('Loading...');
-  const [error, setError] = useState<string>('');
-  const backendUrl = 'https://flask-backend-cvrn3rali9vc739janm0.onrender.com';
+  const [message, setMessage] = useState<string>('Loading...')
+  const [error, setError] = useState<string>('')
+  const backendUrl = 'https://projet-cicd-simple.onrender.com'
 
   const testBackend = async () => {
     try {
-      console.log('Testing backend connection...');
-      const response = await fetch(`${backendUrl}/api/hello`);
-      console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      console.log('Data received:', data);
-      setMessage(data.message);
-      setError('');
+      const response = await axios.get(`${backendUrl}/api/hello`)
+      setMessage(response.data.message)
+      setError('')
     } catch (err) {
-      console.error('Full error:', err);
-      setError(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`);
-      setMessage('Failed to connect to backend');
+      setError(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+      setMessage('Failed to connect to backend')
     }
-  };
+  }
 
   useEffect(() => {
-    testBackend();
-  }, []);
+    testBackend()
+  }, [])
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Projet CI/CD Simple</h1>
-        <p>Message du backend : {message}</p>
-        <p>Backend URL: {backendUrl}</p>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button onClick={testBackend}>Test Connection</button>
+        <div className="message-container">
+          <p className="message-label">Message du backend :</p>
+          <p className="message-content">{message}</p>
+        </div>
+        {error && <p className="error-message">{error}</p>}
+        <button className="test-button" onClick={testBackend}>
+          Test Connection
+        </button>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
