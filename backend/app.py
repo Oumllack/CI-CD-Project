@@ -8,9 +8,10 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+# Configuration CORS plus permissive
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["https://projet-cicd-simple.vercel.app"],
+        "origins": ["*"],  # Permettre toutes les origines
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type"]
     }
