@@ -5,7 +5,7 @@ import './App.css'
 function App() {
   const [message, setMessage] = useState<string>('Loading...')
   const [error, setError] = useState<string>('')
-  const backendUrl = 'https://projet-cicd-simple.onrender.com'
+  const backendUrl = 'https://ci-cd-project-kpbu.onrender.com'
 
   const testBackend = async () => {
     try {
