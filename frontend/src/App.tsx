@@ -11,13 +11,22 @@ function App() {
     console.log('Tentative de connexion au backend...')
     try {
       console.log('Envoi de la requête à:', `${backendUrl}/api/hello`)
-      const response = await axios.get(`${backendUrl}/api/hello`)
+      const response = await axios.get(`${backendUrl}/api/hello`, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
       console.log('Réponse reçue:', response.data)
       setMessage(response.data.message)
       setError('')
     } catch (err) {
       console.error('Erreur de connexion:', err)
-      setError(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+      if (axios.isAxiosError(err)) {
+        setError(`Erreur: ${err.message} - ${err.response?.status} ${err.response?.statusText}`)
+      } else {
+        setError(`Erreur: ${err instanceof Error ? err.message : 'Unknown error'}`)
+      }
       setMessage('Failed to connect to backend')
     }
   }
