@@ -9,4 +9,7 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"] 
+ENV PORT=5000
+ENV FLASK_ENV=production
+
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--access-logfile", "-", "--error-logfile", "-", "app:app"] 
