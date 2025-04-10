@@ -19,6 +19,7 @@ CORS(app, resources={
 
 @app.route('/')
 def root():
+    logger.info("Root endpoint called")
     return redirect('/api/hello')
 
 @app.route('/api/hello', methods=['GET'])
@@ -32,5 +33,6 @@ def hello():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    logging.info(f"Starting Flask application on port {port}")
+    logger.info(f"Starting Flask application on port {port}")
+    logger.info(f"Environment: {os.environ.get('FLASK_ENV', 'development')}")
     app.run(host='0.0.0.0', port=port, debug=False)  # Désactiver le mode debug en production 
