@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import styles from './App.module.css'
 
 function App() {
   const [message, setMessage] = useState<string>('Loading...')
@@ -53,24 +52,90 @@ function App() {
   }, [])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Projet CI/CD Simple</h1>
-          <p className={styles.subtitle}>Démonstration d'une application moderne</p>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '2rem',
+      background: 'linear-gradient(135deg, #1a1a1a, #2d2d2d)',
+      color: 'white'
+    }}>
+      <div style={{
+        width: '100%',
+        maxWidth: '800px',
+        margin: '0 auto'
+      }}>
+        <header style={{
+          textAlign: 'center',
+          marginBottom: '3rem'
+        }}>
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 700,
+            background: 'linear-gradient(45deg, #2563eb, #60a5fa)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '1rem'
+          }}>
+            Projet CI/CD Simple
+          </h1>
+          <p style={{
+            color: '#9ca3af',
+            fontSize: '1.1rem'
+          }}>
+            Démonstration d'une application moderne
+          </p>
         </header>
 
-        <div className={styles.card}>
-          <div className={styles.messageContainer}>
-            <h2 className={styles.messageLabel}>Message du backend</h2>
-            <div className={styles.messageBox}>
-              <p className={styles.messageText}>{message}</p>
+        <div style={{
+          background: '#2d2d2d',
+          borderRadius: '12px',
+          padding: '2rem',
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
+          transition: 'transform 0.3s, box-shadow 0.3s'
+        }}>
+          <div style={{
+            marginBottom: '2rem'
+          }}>
+            <h2 style={{
+              color: '#9ca3af',
+              fontSize: '1rem',
+              marginBottom: '0.5rem'
+            }}>
+              Message du backend
+            </h2>
+            <div style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              padding: '1.5rem',
+              borderRadius: '12px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <p style={{
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                color: '#2563eb'
+              }}>
+                {message}
+              </p>
             </div>
           </div>
 
           {error && (
-            <div className={styles.errorContainer}>
-              <p className={styles.errorMessage}>{error}</p>
+            <div style={{
+              background: 'rgba(239, 68, 68, 0.1)',
+              padding: '1rem',
+              borderRadius: '12px',
+              marginBottom: '1.5rem',
+              border: '1px solid #ef4444'
+            }}>
+              <p style={{
+                color: '#ef4444',
+                fontSize: '0.9rem'
+              }}>
+                {error}
+              </p>
             </div>
           )}
 
@@ -79,14 +144,34 @@ function App() {
               console.log('Bouton cliqué')
               testBackend()
             }}
-            className={styles.button}
+            style={{
+              width: '100%',
+              padding: '1rem',
+              background: '#2563eb',
+              color: 'white',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '1rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'background-color 0.3s, transform 0.3s',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem'
+            }}
             disabled={isLoading}
           >
             {isLoading ? 'Chargement...' : 'Tester la connexion'}
           </button>
         </div>
 
-        <footer className={styles.footer}>
+        <footer style={{
+          textAlign: 'center',
+          marginTop: '3rem',
+          color: '#9ca3af',
+          fontSize: '0.9rem'
+        }}>
           <p>© 2024 Projet CI/CD Simple - Déployé avec ❤️</p>
         </footer>
       </div>
