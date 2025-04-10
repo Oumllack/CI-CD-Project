@@ -54,42 +54,16 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Projet CI/CD Simple</h1>
-          <p className={styles.subtitle}>Démonstration d'une application moderne</p>
-        </header>
-
-        <div className={styles.card}>
-          <div className={styles.messageContainer}>
-            <h2 className={styles.messageLabel}>Message du backend</h2>
-            <div className={styles.messageBox}>
-              <p className={styles.messageText}>{message}</p>
-            </div>
-          </div>
-
-          {error && (
-            <div className={styles.errorContainer}>
-              <p className={styles.errorMessage}>{error}</p>
-            </div>
-          )}
-
-          <button 
-            onClick={() => {
-              console.log('Bouton cliqué')
-              testBackend()
-            }}
-            className={styles.button}
-            disabled={isLoading}
-          >
-            {isLoading ? 'Chargement...' : 'Tester la connexion'}
-          </button>
-        </div>
-
-        <footer className={styles.footer}>
-          <p>© 2024 Projet CI/CD Simple - Déployé avec ❤️</p>
-        </footer>
-      </div>
+      <h1>Projet CI/CD Simple</h1>
+      <p>Message du backend: {message}</p>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button 
+        onClick={testBackend}
+        className={styles.button}
+        disabled={isLoading}
+      >
+        {isLoading ? 'Chargement...' : 'Tester la connexion'}
+      </button>
     </div>
   )
 }
