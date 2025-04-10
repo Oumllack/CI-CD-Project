@@ -9,7 +9,10 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        format: 'es',
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
       }
     }
   },
@@ -17,5 +20,6 @@ export default defineConfig({
     headers: {
       'Content-Type': 'application/javascript'
     }
-  }
+  },
+  base: './'
 })

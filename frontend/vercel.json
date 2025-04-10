@@ -11,17 +11,14 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "Content-Type": "text/html"
-      }
-    },
-    {
       "src": "/assets/(.*)",
       "headers": {
         "Content-Type": "application/javascript"
       }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
   "headers": [
