@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import styles from './App.module.css'
 
 function App() {
   const [message, setMessage] = useState<string>('Loading...')
@@ -52,24 +53,24 @@ function App() {
   }, [])
 
   return (
-    <div className="container">
-      <div className="content">
-        <header className="header">
-          <h1 className="title">Projet CI/CD Simple</h1>
-          <p className="subtitle">Démonstration d'une application moderne</p>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Projet CI/CD Simple</h1>
+          <p className={styles.subtitle}>Démonstration d'une application moderne</p>
         </header>
 
-        <div className="card">
-          <div className="messageContainer">
-            <h2 className="messageLabel">Message du backend</h2>
-            <div className="messageBox">
-              <p className="messageText">{message}</p>
+        <div className={styles.card}>
+          <div className={styles.messageContainer}>
+            <h2 className={styles.messageLabel}>Message du backend</h2>
+            <div className={styles.messageBox}>
+              <p className={styles.messageText}>{message}</p>
             </div>
           </div>
 
           {error && (
-            <div className="errorContainer">
-              <p className="errorMessage">{error}</p>
+            <div className={styles.errorContainer}>
+              <p className={styles.errorMessage}>{error}</p>
             </div>
           )}
 
@@ -78,14 +79,14 @@ function App() {
               console.log('Bouton cliqué')
               testBackend()
             }}
-            className="button"
+            className={styles.button}
             disabled={isLoading}
           >
             {isLoading ? 'Chargement...' : 'Tester la connexion'}
           </button>
         </div>
 
-        <footer className="footer">
+        <footer className={styles.footer}>
           <p>© 2024 Projet CI/CD Simple - Déployé avec ❤️</p>
         </footer>
       </div>
