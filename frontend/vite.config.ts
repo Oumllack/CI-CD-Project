@@ -10,9 +10,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         format: 'es',
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+        assetFileNames: '[name].[ext]'
       }
     }
   },
@@ -21,5 +21,5 @@ export default defineConfig({
       'Content-Type': 'application/javascript'
     }
   },
-  base: './'
+  base: '/'
 })
