@@ -2,9 +2,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 
-// Configuration d'axios pour gérer les CORS
-axios.defaults.withCredentials = true
-
 function App() {
   const [message, setMessage] = useState<string>('Loading...')
   const [error, setError] = useState<string>('')
@@ -14,14 +11,7 @@ function App() {
     console.log('Tentative de connexion au backend...')
     try {
       console.log('Envoi de la requête à:', `${backendUrl}/api/hello`)
-      const response = await axios.get(`${backendUrl}/api/hello`, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Origin': window.location.origin
-        },
-        withCredentials: true
-      })
+      const response = await axios.get(`${backendUrl}/api/hello`)
       console.log('Réponse reçue:', response.data)
       setMessage(response.data.message)
       setError('')
